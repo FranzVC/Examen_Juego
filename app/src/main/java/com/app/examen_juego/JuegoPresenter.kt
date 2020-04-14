@@ -2,8 +2,7 @@ package com.app.examen_juego
 
 import android.content.Context
 
-class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
-    IContractJuego.Presenter {
+class JuegoPresenter(val view: IContractJuego.View, val context: Context) : IContractJuego.Presenter {
 
     lateinit var posiciones: MutableList<Int>
     var posicionesLibres:MutableList<Int> = arrayListOf(1,2,3,4,5,6,7,8,9)
@@ -116,7 +115,9 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
     }
 
     override fun verificar(): Boolean {
-        TODO("Not yet implemented")
+        var resp = false
+
+        return resp
     }
 
     override fun reiniciar() {
