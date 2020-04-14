@@ -1,7 +1,9 @@
 package com.app.examen_juego
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),IContractJuego.View {
 
@@ -19,91 +21,77 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     }
 
     override fun pos1Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos00.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos00.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos1.setBackgroundColor(color)
+
 
     }
 
     override fun pos2Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos01.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos01.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos2.setBackgroundColor(color)
     }
 
     override fun pos3Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos02.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos02.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos3.setBackgroundColor(color)    }
+    }
 
     override fun pos4Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos10.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos10.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos4.setBackgroundColor(color)    }
+    }
 
     override fun pos5Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos11.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos11.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos5.setBackgroundColor(color)
     }
 
     override fun pos6Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos12.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos12.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos6.setBackgroundColor(color)
     }
 
     override fun pos7Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos20.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos20.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos7.setBackgroundColor(color)    }
+         }
 
     override fun pos8Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos21.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos21.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos8.setBackgroundColor(color)
     }
 
     override fun pos9Selected(numeroJugador: Int) {
-        var color = ""
         if(numeroJugador == 1){
-            color = "red"
+            btn_pos22.setBackgroundColor(resources.getColor(R.color.j1))
         }else {
-            color = "green"
+            btn_pos22.setBackgroundColor(resources.getColor(R.color.j2))
         }
-        btn_pos8.setBackgroundColor(color)
     }
 
 
