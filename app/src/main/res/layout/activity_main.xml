@@ -10,14 +10,12 @@
         android:id="@+id/jugadorB"
         android:layout_width="103dp"
         android:layout_height="48dp"
-        android:layout_marginStart="104dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="#D81919"
         android:text="Jugador B"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/jugadorA"
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:ignore="MissingConstraints" />
 
@@ -30,6 +28,8 @@
         android:backgroundTint="#4CAF50"
         android:text="Jugador A"
         android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/jugadorB"
+        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:ignore="MissingConstraints" />
@@ -37,13 +37,11 @@
     <TextView
         android:id="@+id/p2"
         android:layout_width="76dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="120dp"
+        android:layout_height="25dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="72dp"
         android:text="Esperancita"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/p1"
         app:layout_constraintTop_toBottomOf="@+id/jugadorB"
         tools:ignore="MissingConstraints" />
 
@@ -168,6 +166,8 @@
         android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
         android:text="Patrona"
+        app:layout_constraintEnd_toStartOf="@+id/p2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jugadorA"
         tools:ignore="MissingConstraints" />

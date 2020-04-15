@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),IContractJuego.View {
+class MainActivity : AppCompatActivity(), IContractJuego.View {
 
     lateinit var juegoPresenter: IContractJuego.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,37 +19,37 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
         juegoPresenter = JuegoPresenter(this, applicationContext)
     }
 
-    fun clickButton(view: View){
-        if (view.id == btn_pos00.id){
+    fun clickButton(view: View) {
+        if (view.id == btn_pos00.id) {
             juegoPresenter.jugar(1)
         }
-        if (view.id == btn_pos01.id){
+        if (view.id == btn_pos01.id) {
             juegoPresenter.jugar(2)
         }
-        if (view.id == btn_pos02.id){
+        if (view.id == btn_pos02.id) {
             juegoPresenter.jugar(3)
         }
-        if (view.id == btn_pos10.id){
+        if (view.id == btn_pos10.id) {
             juegoPresenter.jugar(4)
         }
-        if (view.id == btn_pos11.id){
+        if (view.id == btn_pos11.id) {
             juegoPresenter.jugar(5)
         }
-        if (view.id == btn_pos12.id){
+        if (view.id == btn_pos12.id) {
             juegoPresenter.jugar(6)
         }
-        if (view.id == btn_pos20.id){
+        if (view.id == btn_pos20.id) {
             juegoPresenter.jugar(7)
         }
-        if (view.id == btn_pos21.id){
+        if (view.id == btn_pos21.id) {
             juegoPresenter.jugar(8)
         }
-        if (view.id == btn_pos22.id){
+        if (view.id == btn_pos22.id) {
             juegoPresenter.jugar(9)
         }
     }
 
-    override fun restart(){
+    override fun restart() {
         btn_pos00.setBackgroundColor(resources.getColor(R.color.btn_base))
         btn_pos01.setBackgroundColor(resources.getColor(R.color.btn_base))
         btn_pos02.setBackgroundColor(resources.getColor(R.color.btn_base))
@@ -59,15 +59,25 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
         btn_pos20.setBackgroundColor(resources.getColor(R.color.btn_base))
         btn_pos21.setBackgroundColor(resources.getColor(R.color.btn_base))
         btn_pos22.setBackgroundColor(resources.getColor(R.color.btn_base))
+
+        btn_pos00.isEnabled = true
+        btn_pos01.isEnabled = true
+        btn_pos02.isEnabled = true
+        btn_pos10.isEnabled = true
+        btn_pos11.isEnabled = true
+        btn_pos12.isEnabled = true
+        btn_pos20.isEnabled = true
+        btn_pos21.isEnabled = true
+        btn_pos22.isEnabled = true
     }
 
     override fun showWinMessage() {
-        Log.d("RESULT","YOU WIN")
+        Log.d("RESULT", "YOU WIN")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Result:")
         builder.setMessage("YOU WIN")
 
-        builder.setPositiveButton("restart game") { _,_ ->
+        builder.setPositiveButton("restart game") { _, _ ->
             juegoPresenter.reiniciar()
         }
         builder.show()
@@ -75,12 +85,12 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     }
 
     override fun showLoseMessage() {
-        Log.d("RESULT","YOU LOSE")
+        Log.d("RESULT", "YOU LOSE")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Result:")
         builder.setMessage("YOU LOSE")
 
-        builder.setPositiveButton("restart game") { _,_ ->
+        builder.setPositiveButton("restart game") { _, _ ->
             juegoPresenter.reiniciar()
         }
 
@@ -88,12 +98,12 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     }
 
     override fun showTieMessage() {
-        Log.d("RESULT","TIE")
+        Log.d("RESULT", "TIE")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Result:")
         builder.setMessage("TIE")
 
-        builder.setPositiveButton("restart game") { _,_ ->
+        builder.setPositiveButton("restart game") { _, _ ->
             juegoPresenter.reiniciar()
         }
 
@@ -101,74 +111,84 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     }
 
     override fun pos1Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos00.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos00.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos00.isEnabled = false
+
     }
 
     override fun pos2Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos01.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos01.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos01.isEnabled = false
     }
 
     override fun pos3Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos02.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos02.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos02.isEnabled = false
     }
 
     override fun pos4Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos10.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos10.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos10.isEnabled = false
     }
 
     override fun pos5Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos11.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos11.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos11.isEnabled = false
     }
 
     override fun pos6Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos12.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos12.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos12.isEnabled = false
     }
 
     override fun pos7Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos20.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos20.setBackgroundColor(resources.getColor(R.color.j2))
         }
-         }
+        btn_pos20.isEnabled = false
+    }
 
     override fun pos8Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos21.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos21.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos21.isEnabled = false
     }
 
     override fun pos9Selected(numeroJugador: Int) {
-        if(numeroJugador == 1){
+        if (numeroJugador == 1) {
             btn_pos22.setBackgroundColor(resources.getColor(R.color.j1))
-        }else {
+        } else {
             btn_pos22.setBackgroundColor(resources.getColor(R.color.j2))
         }
+        btn_pos22.isEnabled = false
     }
 }
