@@ -1,10 +1,12 @@
 package com.app.examen_juego
 
+import android.app.AlertDialog
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),IContractJuego.View {
@@ -48,15 +50,28 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
 
     override fun restart(){
 
-
     }
 
     override fun showWinMessage() {
         Log.d("RESULT","YOU WIN")
+        val builder = AlertDialog.Builder(applicationContext)
+        builder.setTitle("Result:")
+        builder.setMessage("YOU WIN")
+
+        builder.setPositiveButton("restart game") { _,_ ->
+            juegoPresenter.reiniciar()
+        }
     }
 
     override fun showLoseMessage() {
         Log.d("RESULT","YOU LOSE")
+        val builder = AlertDialog.Builder(applicationContext)
+        builder.setTitle("Result:")
+        builder.setMessage("YOU LOSE")
+
+        builder.setPositiveButton("restart game") { _,_ ->
+            juegoPresenter.reiniciar()
+        }
     }
 
     override fun pos1Selected(numeroJugador: Int) {

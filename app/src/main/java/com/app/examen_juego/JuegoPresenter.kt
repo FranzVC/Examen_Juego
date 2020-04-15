@@ -134,6 +134,7 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
     }
 
     override fun reiniciar() {
+
         view.restart()
     }
 }
