@@ -3,6 +3,7 @@ package com.app.examen_juego
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        juegoPresenter = JuegoPresenter(this, applicationContext)
     }
 
     fun clickButton(view: View){
@@ -44,11 +46,17 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
         }
     }
 
-    override fun showWinMessage() {
+    override fun restart(){
+
 
     }
 
+    override fun showWinMessage() {
+        Log.d("RESULT","YOU WIN")
+    }
+
     override fun showLoseMessage() {
+        Log.d("RESULT","YOU LOSE")
     }
 
     override fun pos1Selected(numeroJugador: Int) {

@@ -2,18 +2,30 @@ package com.app.examen_juego
 
 import android.content.Context
 
-class JuegoPresenter(val view: IContractJuego.View, val context: Context) : IContractJuego.Presenter {
+class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
+    IContractJuego.Presenter {
 
-    lateinit var posicionesJ1: MutableList<Int>
-    lateinit var posicionesJ2: MutableList<Int>
-    var posicionesLibres:MutableList<Int> = arrayListOf(1,2,3,4,5,6,7,8,9)
+    var posicionesJ1: MutableList<Int> = arrayListOf()
+    var posicionesJ2: MutableList<Int> = arrayListOf()
+    var posicionesLibres: MutableList<Int> = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
     override fun jugar(pos: Int) {
+
         turnoJugador1(pos)
-        val randomNumber = posicionesLibres.random()
-        turnoJugador2(randomNumber)
+        if (!posicionesLibres.isEmpty()) {
+            val randomNumber = posicionesLibres.random()
+            turnoJugador2(randomNumber)
+        }
+        else{
+            if (verificar()){
+                view.showWinMessage()
+            }
+            else{
+                view.showLoseMessage()
+            }
+        }
     }
 
-    private fun turnoJugador1(pos: Int){
+    private fun turnoJugador1(pos: Int) {
         if (pos == 1 && posLibre(1)) {
             view.pos1Selected(2)
             posicionesJ1.add(1)
@@ -62,7 +74,7 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) : ICon
         }
     }
 
-    private fun turnoJugador2(pos: Int){
+    private fun turnoJugador2(pos: Int) {
         if (pos == 1 && posLibre(1)) {
             view.pos1Selected(1)
             posicionesJ2.add(1)
@@ -122,6 +134,6 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) : ICon
     }
 
     override fun reiniciar() {
-        TODO("Not yet implemented")
+        view.restart()
     }
 }
