@@ -18,7 +18,7 @@ interface IContractJuego {
 
     interface Presenter {
         fun jugar(pos:Int)
-        fun verificar():Boolean
+        fun verificar(list: MutableList<Int>):Boolean
         fun reiniciar()
     }
 }

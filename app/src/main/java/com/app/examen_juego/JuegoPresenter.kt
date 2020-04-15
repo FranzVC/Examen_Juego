@@ -115,13 +115,39 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) : ICon
         return posicionesLibres.contains(pos)
     }
 
-    override fun verificar(): Boolean {
+    override fun verificar(list: MutableList<Int>): Boolean {
         var resp = false
+        if(esHorizontal(list) || esVertical(list) || esDiagonal(list))
+            resp=true
 
         return resp
     }
 
     override fun reiniciar() {
         TODO("Not yet implemented")
+    }
+
+    private fun esHorizontal(list: MutableList<Int>): Boolean{
+        var resp = false
+        if((list.contains(1) && list.contains(2) && list.contains(3)) ||
+            (list.contains(4) && list.contains(5) && list.contains(6))||
+            (list.contains(7) && list.contains(8) && list.contains(9)) )
+            resp = true
+        return resp
+    }
+    private fun esVertical(list: MutableList<Int>): Boolean{
+        var resp = false
+        if((list.contains(1) && list.contains(4) && list.contains(7)) ||
+            (list.contains(2) && list.contains(5) && list.contains(8))||
+            (list.contains(3) && list.contains(6) && list.contains(9)) )
+            resp = true
+        return resp
+    }
+    private fun esDiagonal(list: MutableList<Int>): Boolean{
+        var resp = false
+        if((list.contains(1) && list.contains(5) && list.contains(9)) ||
+            (list.contains(3) && list.contains(5) && list.contains(7)) )
+            resp = true
+        return resp
     }
 }
