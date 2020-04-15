@@ -4,6 +4,7 @@ interface IContractJuego {
     interface View {
         fun showWinMessage()
         fun showLoseMessage()
+        fun showTieMessage()
         fun pos1Selected(numeroJugador:Int)
         fun pos2Selected(numeroJugador:Int)
         fun pos3Selected(numeroJugador:Int)
@@ -13,7 +14,7 @@ interface IContractJuego {
         fun pos7Selected(numeroJugador:Int)
         fun pos8Selected(numeroJugador:Int)
         fun pos9Selected(numeroJugador:Int)
-
+        fun restart()
     }
 
     interface Presenter {

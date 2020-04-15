@@ -3,6 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="btn_base">#7A7A7A</color>
     <color name="j1" >#D81B60</color>
     <color name="j2">#1BD824</color>
 </resources>
