@@ -16,14 +16,16 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
             turnoJugador2(randomNumber)
         }
 
-        if (verificar(posicionesJ1))
+        if (verificar(posicionesJ1)) {
             view.showWinMessage()
-        if (verificar(posicionesJ2))
-            view.showLoseMessage()
-        else{
-            view.showTieMessage()
+        } else {
+            if (verificar(posicionesJ2))
+                view.showLoseMessage()
+            else {
+                if (posicionesLibres.isEmpty())
+                    view.showTieMessage()
+            }
         }
-
 
 
     }
@@ -50,7 +52,7 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
             posicionesJ1.add(4)
             posicionesLibres.remove(4)
         }
-        if (pos == 5 && posLibre(7)) {
+        if (pos == 5 && posLibre(5)) {
             view.pos5Selected(2)
             posicionesJ1.add(5)
             posicionesLibres.remove(5)
@@ -99,7 +101,7 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
             posicionesJ2.add(4)
             posicionesLibres.remove(4)
         }
-        if (pos == 5 && posLibre(7)) {
+        if (pos == 5 && posLibre(5)) {
             view.pos5Selected(1)
             posicionesJ2.add(5)
             posicionesLibres.remove(5)
@@ -132,8 +134,8 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
 
     override fun verificar(list: MutableList<Int>): Boolean {
         var resp = false
-        if(esHorizontal(list) || esVertical(list) || esDiagonal(list))
-            resp=true
+        if (esHorizontal(list) || esVertical(list) || esDiagonal(list))
+            resp = true
 
         return resp
     }
@@ -146,26 +148,31 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
         view.restart()
     }
 
-    private fun esHorizontal(list: MutableList<Int>): Boolean{
+    private fun esHorizontal(list: MutableList<Int>): Boolean {
         var resp = false
-        if((list.contains(1) && list.contains(2) && list.contains(3)) ||
-            (list.contains(4) && list.contains(5) && list.contains(6))||
-            (list.contains(7) && list.contains(8) && list.contains(9)) )
+        if ((list.contains(1) && list.contains(2) && list.contains(3)) ||
+            (list.contains(4) && list.contains(5) && list.contains(6)) ||
+            (list.contains(7) && list.contains(8) && list.contains(9))
+        )
             resp = true
         return resp
     }
-    private fun esVertical(list: MutableList<Int>): Boolean{
+
+    private fun esVertical(list: MutableList<Int>): Boolean {
         var resp = false
-        if((list.contains(1) && list.contains(4) && list.contains(7)) ||
-            (list.contains(2) && list.contains(5) && list.contains(8))||
-            (list.contains(3) && list.contains(6) && list.contains(9)) )
+        if ((list.contains(1) && list.contains(4) && list.contains(7)) ||
+            (list.contains(2) && list.contains(5) && list.contains(8)) ||
+            (list.contains(3) && list.contains(6) && list.contains(9))
+        )
             resp = true
         return resp
     }
-    private fun esDiagonal(list: MutableList<Int>): Boolean{
+
+    private fun esDiagonal(list: MutableList<Int>): Boolean {
         var resp = false
-        if((list.contains(1) && list.contains(5) && list.contains(9)) ||
-            (list.contains(3) && list.contains(5) && list.contains(7)) )
+        if ((list.contains(1) && list.contains(5) && list.contains(9)) ||
+            (list.contains(3) && list.contains(5) && list.contains(7))
+        )
             resp = true
         return resp
     }
