@@ -4,6 +4,7 @@ interface IContractJuego {
     interface View {
         fun showWinMessage()
         fun showLoseMessage()
+        fun showTieMessage()
         fun pos1Selected(numeroJugador:Int)
         fun pos2Selected(numeroJugador:Int)
         fun pos3Selected(numeroJugador:Int)

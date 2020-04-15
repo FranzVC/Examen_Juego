@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,29 +50,54 @@ class MainActivity : AppCompatActivity(),IContractJuego.View {
     }
 
     override fun restart(){
-
+        btn_pos00.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos01.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos02.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos10.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos11.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos12.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos20.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos21.setBackgroundColor(resources.getColor(R.color.btn_base))
+        btn_pos22.setBackgroundColor(resources.getColor(R.color.btn_base))
     }
 
     override fun showWinMessage() {
         Log.d("RESULT","YOU WIN")
-        val builder = AlertDialog.Builder(applicationContext)
+        val builder = AlertDialog.Builder(this)
         builder.setTitle("Result:")
         builder.setMessage("YOU WIN")
 
         builder.setPositiveButton("restart game") { _,_ ->
             juegoPresenter.reiniciar()
         }
+        builder.show()
+
     }
 
     override fun showLoseMessage() {
         Log.d("RESULT","YOU LOSE")
-        val builder = AlertDialog.Builder(applicationContext)
+        val builder = AlertDialog.Builder(this)
         builder.setTitle("Result:")
         builder.setMessage("YOU LOSE")
 
         builder.setPositiveButton("restart game") { _,_ ->
             juegoPresenter.reiniciar()
         }
+
+        builder.show()
+    }
+
+    override fun showTieMessage() {
+        Log.d("RESULT","TIE")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Result:")
+        builder.setMessage("TIE")
+
+        builder.setPositiveButton("restart game") { _,_ ->
+            juegoPresenter.reiniciar()
+        }
+
+        builder.show()
     }
 
     override fun pos1Selected(numeroJugador: Int) {

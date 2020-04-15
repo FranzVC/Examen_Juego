@@ -11,18 +11,15 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
     override fun jugar(pos: Int) {
 
         turnoJugador1(pos)
-        if (!posicionesLibres.isEmpty()) {
+        if (!posicionesLibres.isEmpty() && !verificar()) {
             val randomNumber = posicionesLibres.random()
             turnoJugador2(randomNumber)
         }
         else{
-            if (verificar()){
-                view.showWinMessage()
-            }
-            else{
-                view.showLoseMessage()
-            }
+            view.showTieMessage()
         }
+
+
     }
 
     private fun turnoJugador1(pos: Int) {
@@ -128,13 +125,15 @@ class JuegoPresenter(val view: IContractJuego.View, val context: Context) :
     }
 
     override fun verificar(): Boolean {
-        var resp = false
-
+        var resp = true
         return resp
     }
 
     override fun reiniciar() {
 
+        posicionesJ1 = arrayListOf()
+        posicionesJ2 = arrayListOf()
+        posicionesLibres = arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
         view.restart()
     }
 }
